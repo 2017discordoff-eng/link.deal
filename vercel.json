@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/:type(track|playlist|artist|album)", "destination": "/open.html" },
+    { "source": "/health", "destination": "/health.txt" }
+  ]
+}
