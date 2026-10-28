@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Album • Deal</title>
+<meta name="theme-color" content="#5865f2">
+<meta property="og:site_name" content="Deal">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Album • Deal">
+<meta property="og:description" content="Listen to this album on Deal.">
+<meta property="og:image" content="https://linkdeal-kappa.vercel.app/icon.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Album • Deal">
+<meta name="twitter:description" content="Listen to this album on Deal.">
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0b0b0f;color:#fff;font-family:system-ui,sans-serif;text-align:center}
+.c{max-width:360px;padding:24px}a.b{display:block;margin:10px 0;padding:12px;border-radius:10px;background:#5865f2;color:#fff;text-decoration:none;font-weight:600}
+a.s{background:#fff;color:#000}
+</style></head><body><div class="c">
+<h2 id="t">Ouverture dans Deal…</h2>
+<p id="m">Si rien ne se passe, clique ci-dessous.</p>
+<a class="b" id="open" href="#">Ouvrir dans Deal</a>
+<a class="b s" href="https://trydeal.vercel.app">Télécharger Deal</a>
+</div>
+<script>
+(function(){
+  var RULES={artist:/^UC[A-Za-z0-9_-]{22}$/,album:/^MPRE[A-Za-z0-9_-]{4,64}$/,playlist:/^[A-Za-z0-9_-]{8,64}$/,track:/^[A-Za-z0-9_-]{11}$/};
+  var type='album';
+  var ids=new URLSearchParams(location.search).getAll('id');
+  if(!RULES[type]||ids.length!==1||!RULES[type].test(ids[0])){
+    document.getElementById('t').textContent='Lien invalide';
+    document.getElementById('m').textContent='';
+    document.getElementById('open').style.display='none';return;
+  }
+  var url='liner://'+type+'?id='+encodeURIComponent(ids[0]);
+  document.getElementById('open').href=url;
+  location.href=url;
+})();
+</script></body></html>
